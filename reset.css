@@ -8,12 +8,7 @@ Twitter: @rich_clark
 
 @font-face {
     font-family: ScriptWriter;
-    src: url(/CourierScriptwriter.ttf);
-  }
-  
-  @font-face {
-    font-family: ScriptWriter-Bold;
-    src: url(/CourierScriptwriter-Bold.ttf);
+    src: url(/scriptwriter.ttf);
   }
 
 html, body, div, span, object, iframe,

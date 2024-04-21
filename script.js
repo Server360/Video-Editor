@@ -18,6 +18,8 @@ const ext_map = {
   'jpg': 'image/jpeg',
   'jpeg': 'image/jpeg',
   'png': 'image/png',
+  'apng': 'image/apng',
+  'avif': 'image/avif',
   'webp': 'image/webp',
   'aac': 'audio/aac',
   'mp3': 'audio/mpeg',

@@ -1,62 +1,61 @@
-# mebm
+# Aurorasoft Videographer
 
-[tutorial](https://bwasti.github.io/mebm/#https%3A%2F%2Fjott.live%2Fraw%2Ftutorial.json)
+[Use an Example Project](https://videographer.pages.dev/#https%3A%2F%2Fjott.live%2Fraw%2Ftutorial.json)
 
-[https://bwasti.github.io/mebm/](https://bwasti.github.io/mebm/) (empty project)
+[Start from Scratch](https://videographer.pages.dev/)
 
 
-mebm is a browser based video editor that supports animation of images and text overlays.
-The animation is done with key-frames (denoted in blue on the timeline) and linear interpolation.
+Videographer is a browser-based video editor that lets you animate text and images. The animations are done with key-frames (denoted in blue on the Timeline) and linear interpolation.
 
-The design values simplicity and rudimentary functionality over a full feature set.
+The design is meant for simple and quick projects, and not for full professional use.
 
-# usage
+# Usage
 
-- space to pause/play
-- select layers to manipulate them (click on the timeline or sidebar)
-  - shift + scroll or pinch to zoom text and images
-  - drag to move them
-  - arrow keys to jump between keypoints
-  - backspace to remove keypoints
-- import
-  - by dragging in videos images or audio files
-  - by clicking "+ media"
-  - by pasting URLs to hosted media (only some domains)
-- export by clicking "export"
-  - let video play to completion
-  - click "download" to grab a copy (.webm)
+- Press `space` to pause or play the preview.
+- Select layers to manipulate them (click on the Timeline or sidebar).
+  - Pinch the screen or trackpad or use `shift + scroll` to enlarge or shrink text and images.
+  - Drag to move text and images.
+  - Use the `arrow keys` to jump between keypoints
+  - backspace to remove keypoints.
+- Importing
+  - Drag-n-drop to import videos, images, or audio files.
+  - Click the "Media..." button to add videos, images, or audio files.
+  - Paste URLs to hosted media (only some domains)
+- Exporting
+  - Click the "Export" button.
+  - Let the video preview play fully.
+  - Click "Download" to save the `.webm` video.
   
 <p align="center">
+  <br>Editing Example:<br>
 <img src="https://github.com/bwasti/mebm/blob/main/README_assets/usage.gif?raw=true" width="70%">
-  <br>output:<br>
+  <br>Video Sample:<br>
 <img src="https://github.com/bwasti/mebm/blob/main/README_assets/result.gif?raw=true" width="30%">
 </p>
 
-# todo
+# Credits
+## Original Code
 
-- timeline
-  - [ ] allow extending beyond current max time (medium)
-  - [ ] split audio play head (hard)
-  - [ ] splits in templates (medium)
-- file management
-  - [ ] error on bad type (easy)
-  - [ ] animated .gif support
-- editing
-  - [ ] menu for advanced settings per layer (easy)
-  - [ ] element selection by click (medium)
-  - [ ] undo (hard)
-  - [ ] face tracking (medium)
-  - [ ] opacity (easy)
-  - [ ] rotation (medium)
-- compatibility
-  - [ ] chrome export bug workaround
-  - [ ] mouseover preview safari fix
-  - [ ] mobile touch events (partially done)
-- code
-  - [ ] refactor/simplify MoveableLayer this.frames
-  - [ ] make video a MoveableLayer
-  - [ ] compress video frames
-  - [ ] investigate memory use warning on safari
-  - [ ] cache render output for thumbnails
-  - [ ] move height/width setting logic out of render loop
-  - [ ] improve text scaling logic (avoid font size, use ctx.scale)
+This project couldn't have been done without the excellent work of Bram Wasti and their projects 'mebm' and 'jott'.
+
+To get the source code for Bram Wasti's 'mebm', visit [the Github repository](https://github.com/bwasti/mebm/).
+
+## Images and Videos
+
+The images, videos, and GIFs used in the example project and this README.md file are provided by Bram Wasti and their original project.
+
+## Desing and UI
+
+Videographer's user interface is based off of Google's Material Design system, which can be found [here](https://m3.material.io/).
+
+## Fonts
+
+Courier Scriptwriter (under the name 'ScriptWriter') was designed by in-house workers at Aurorasoft.
+
+Arial (under the name 'sans-serif') is a trademark of Monotype Imaging, Inc. All rights reserved.
+
+Liberation Sans (under the name 'sans-serif') is a free and open source font, which can be found at [this Github repository](https://github.com/liberationfonts/liberation-fonts).
+
+### Other Fonts
+
+The 'sans-serif' font is different for every device, platform, and operating system. Arial and Liberation Sans are the most common fonts loaded under this default name. Any other fonts loaded under tha name 'sans-serif' are copyright to their respective owners.
