@@ -186,7 +186,7 @@ a:visited {
 
 #foreground #time {
   position: absolute;
-  background: rgb(40,41,42);
+  background: black;
   right: 0;
   left: 0;
   bottom: 0;

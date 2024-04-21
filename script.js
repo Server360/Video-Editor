@@ -545,58 +545,33 @@ class TextLayer extends MoveableLayer {
   render(ctx_out, ref_time) {
     let f = this.getFrame(ref_time);
     if (f) {
-  
+
       let scale = f[2];
-  
-      // Define the custom font and URL
-      const customFont = "ScriptWriter";
-      const fontUrl = "/CourierScriptwriter.ttf";  // Replace with your font URL
-  
-      // Load the custom font asynchronously
-      this.loadFont(customFont, fontUrl).then(() => {
-  
-        // Set the font after successful loading
-        this.ctx.font = Math.floor(scale * 30) + "px " + customFont;
-  
-        let lines = this.name.split('\n');
-        let rect = this.ctx.measureText(this.name);
-        this.width = rect.width;
-        this.height = rect.actualBoundingBoxAscent + rect.actualBoundingBoxDescent;
-        let x = f[0] + this.canvas.width / 2;
-        let y = f[1] + this.canvas.height / 2;
-  
-        if (this.shadow) {
-          this.ctx.shadowColor = "black";
-          this.ctx.shadowBlur = 7;
-        } else {
-          this.ctx.shadowColor = null;
-          this.ctx.shadowBlur = null;
-        }
-        this.ctx.fillStyle = this.color;
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.ctx.save();
-        this.ctx.translate(x, y);
-        this.ctx.rotate(f[3] * (Math.PI / 180));
-        this.ctx.textAlign = "center";
-        this.ctx.fillText(this.name, 0, 0);
-        this.ctx.restore();
-        this.drawScaled(this.ctx, ctx_out);
-  
-      }).catch((error) => {
-        // Handle font loading error (optional)
-        console.error("Error loading font:", error);
-        // You can set a fallback font here if needed
-      });
+      this.ctx.font = Math.floor(scale * 30) + "px sans-serif";
+      let lines = this.name.split('\n');
+      let rect = this.ctx.measureText(this.name);
+      this.width = rect.width;
+      this.height = rect.actualBoundingBoxAscent + rect.actualBoundingBoxDescent;
+      let x = f[0] + this.canvas.width / 2;
+      let y = f[1] + this.canvas.height / 2;
+      if (this.shadow) {
+        this.ctx.shadowColor = "black";
+        this.ctx.shadowBlur = 7;
+      } else {
+        this.ctx.shadowColor = null;
+        this.ctx.shadowBlur = null;
+      }
+      this.ctx.fillStyle = this.color;
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      this.ctx.save();
+      this.ctx.translate(x, y);
+      this.ctx.rotate(f[3] * (Math.PI / 180));
+      this.ctx.textAlign = "center";
+      this.ctx.fillText(this.name, 0, 0);
+      this.ctx.restore();
+      this.drawScaled(this.ctx, ctx_out);
     }
   }
-  
-  // Function to load the custom font (assuming you have a font loading library)
-  loadFont(fontName, fontUrl) {
-    // Use your preferred font loading library here
-    // This example assumes a function called loadFont that returns a Promise
-    return loadFont(fontName, fontUrl);
-  }
-  
 }
 
 class VideoLayer extends RenderedLayer {
