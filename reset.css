@@ -72,15 +72,15 @@ a {
 
 /* change colours to suit your needs */
 ins {
-    background-color:#ff9;
-    color:#000;
+    background-color:#e3e3e3;
+    color:#1f1f1f;
     text-decoration:none;
 }
 
 /* change colours to suit your needs */
 mark {
-    background-color:#ff9;
-    color:#000; 
+    background-color:#e3e3e3;
+    color:#1f1f1f;
     font-family: 'ScriptWriter-Bold';
 }
 
@@ -103,7 +103,7 @@ hr {
     display:block;
     height:1px;
     border:0;   
-    border-top:1px solid #cccccc;
+    border-top:1px solid #e3e3e3;
     margin:1em 0;
     padding:0;
 }
@@ -111,4 +111,3 @@ hr {
 input, select {
     vertical-align:middle;
 }
-

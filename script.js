@@ -194,9 +194,9 @@ class RenderedLayer {
     let start = scale * this.start_time;
     let length = scale * this.total_time;
     if (selected) {
-      ctx.fillStyle = `rgb(210,210,210)`;
+      ctx.fillStyle = `rgb(227,227,227)`;
     } else {
-      ctx.fillStyle = `rgb(110,110,110)`;
+      ctx.fillStyle = `rgb(227,227,227)`;
     }
     ctx.fillRect(start, y_coord - width / 2, length, width);
     let end_width = width * 6;
@@ -451,7 +451,7 @@ class MoveableLayer extends RenderedLayer {
     for (let i = 0; i < this.frames.length; ++i) {
       if (this.is_anchor(i)) {
         let anchor_x = this.start_time + 1000 * (i / fps);
-        ctx.fillStyle = `rgb(100,210,255)`;
+        ctx.fillStyle = `rgb(0,74,119)`;
         ctx.fillRect(scale * anchor_x, y_coord - width / 2, 3, width);
       }
     }
@@ -499,7 +499,7 @@ class TextLayer extends MoveableLayer {
       name: text
     };
     super(f);
-    this.color = "#ffffff";
+    this.color = "#e3e3e3";
     this.shadow = true;
     this.ready = true;
   }
@@ -545,33 +545,58 @@ class TextLayer extends MoveableLayer {
   render(ctx_out, ref_time) {
     let f = this.getFrame(ref_time);
     if (f) {
-
+  
       let scale = f[2];
-      this.ctx.font = Math.floor(scale * 30) + "px sans-serif";
-      let lines = this.name.split('\n');
-      let rect = this.ctx.measureText(this.name);
-      this.width = rect.width;
-      this.height = rect.actualBoundingBoxAscent + rect.actualBoundingBoxDescent;
-      let x = f[0] + this.canvas.width / 2;
-      let y = f[1] + this.canvas.height / 2;
-      if (this.shadow) {
-        this.ctx.shadowColor = "black";
-        this.ctx.shadowBlur = 7;
-      } else {
-        this.ctx.shadowColor = null;
-        this.ctx.shadowBlur = null;
-      }
-      this.ctx.fillStyle = this.color;
-      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      this.ctx.save();
-      this.ctx.translate(x, y);
-      this.ctx.rotate(f[3] * (Math.PI / 180));
-      this.ctx.textAlign = "center";
-      this.ctx.fillText(this.name, 0, 0);
-      this.ctx.restore();
-      this.drawScaled(this.ctx, ctx_out);
+  
+      // Define the custom font and URL
+      const customFont = "ScriptWriter";
+      const fontUrl = "/CourierScriptwriter.ttf";  // Replace with your font URL
+  
+      // Load the custom font asynchronously
+      this.loadFont(customFont, fontUrl).then(() => {
+  
+        // Set the font after successful loading
+        this.ctx.font = Math.floor(scale * 30) + "px " + customFont;
+  
+        let lines = this.name.split('\n');
+        let rect = this.ctx.measureText(this.name);
+        this.width = rect.width;
+        this.height = rect.actualBoundingBoxAscent + rect.actualBoundingBoxDescent;
+        let x = f[0] + this.canvas.width / 2;
+        let y = f[1] + this.canvas.height / 2;
+  
+        if (this.shadow) {
+          this.ctx.shadowColor = "black";
+          this.ctx.shadowBlur = 7;
+        } else {
+          this.ctx.shadowColor = null;
+          this.ctx.shadowBlur = null;
+        }
+        this.ctx.fillStyle = this.color;
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.ctx.save();
+        this.ctx.translate(x, y);
+        this.ctx.rotate(f[3] * (Math.PI / 180));
+        this.ctx.textAlign = "center";
+        this.ctx.fillText(this.name, 0, 0);
+        this.ctx.restore();
+        this.drawScaled(this.ctx, ctx_out);
+  
+      }).catch((error) => {
+        // Handle font loading error (optional)
+        console.error("Error loading font:", error);
+        // You can set a fallback font here if needed
+      });
     }
   }
+  
+  // Function to load the custom font (assuming you have a font loading library)
+  loadFont(fontName, fontUrl) {
+    // Use your preferred font loading library here
+    // This example assumes a function called loadFont that returns a Promise
+    return loadFont(fontName, fontUrl);
+  }
+  
 }
 
 class VideoLayer extends RenderedLayer {
@@ -1335,7 +1360,7 @@ class Player {
     this.last_step = realtime;
     this.time_ctx.clearRect(0, 0, this.time_canvas.clientWidth, this.time_canvas.clientWidth);
     let x = this.time_canvas.clientWidth * this.time / this.total_time;
-    this.time_ctx.fillStyle = `rgb(210,210,210)`;
+    this.time_ctx.fillStyle = `rgb(196,199,197)`;
     this.time_ctx.fillRect(x, 0, 2, this.time_canvas.clientHeight);
     this.time_ctx.font = "10px courier";
     this.time_ctx.fillText(this.time.toFixed(2), x + 5, 10);
@@ -1343,7 +1368,7 @@ class Player {
 
     if (this.aux_time > 0) {
       let aux_x = this.time_canvas.clientWidth * this.aux_time / this.total_time;
-      this.time_ctx.fillStyle = `rgb(110,110,110)`;
+      this.time_ctx.fillStyle = `rgb(196,199,197)`;
       this.time_ctx.fillRect(aux_x, 0, 1, this.time_canvas.clientHeight);
       this.render(this.cursor_ctx, this.aux_time, false);
     }
