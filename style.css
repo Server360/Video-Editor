@@ -181,7 +181,7 @@ a:visited {
 }
 
 #layers .selected {
-  border-left: solid rgb(227,227,227) 4px;
+  border-left: solid rgb(0,74,119) 4px;
 }
 
 #foreground #time {
