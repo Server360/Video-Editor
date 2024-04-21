@@ -547,7 +547,7 @@ class TextLayer extends MoveableLayer {
     if (f) {
 
       let scale = f[2];
-      this.ctx.font = Math.floor(scale * 30) + "px Georgia";
+      this.ctx.font = Math.floor(scale * 30) + "px System UI";
       let lines = this.name.split('\n');
       let rect = this.ctx.measureText(this.name);
       this.width = rect.width;
@@ -1506,7 +1506,7 @@ window.addEventListener('load', function() {
     text.innerHTML = `Welcome!
       <br>
       <br>
-      To start, drag in or paste URLs to videos and images.
+      to start, drag in or paste URLs to videos and images.
       `;
     popup(text);
     localStorage.setItem('_seen', 'true');
@@ -1534,7 +1534,7 @@ function add_text() {
 }
 
 function exportVideo(blob) {
-  alert("Warning: exported video may need to be fixed with CloudConvert.com or similar tools");
+  alert("warning: exported video may need to be fixed with cloudconvert.com or similar tools");
   const vid = document.createElement('video');
   vid.controls = true;
   vid.src = URL.createObjectURL(blob);
@@ -1580,7 +1580,7 @@ function uploadSupportedType(files) {
     const text = document.createElement('div');
     text.style.textAlign = "left";
     text.innerHTML = `
-    The file(s) you uploaded are not supported:
+    the file(s) you uploaded are not supported:
     <br>
     <br>
     ${badFiles}
@@ -1649,12 +1649,12 @@ function download(ev) {
     return;
   }
   if (player.layers.length == 0) {
-    alert("Eothing to export");
+    alert("nothing to export");
     return;
   }
   const e = document.getElementById('export');
   const e_text = e.textContent;
-  e.textContent = "Exporting...";
+  e.textContent = "exporting...";
   const chunks = [];
   const stream = player.canvas.captureStream();
 
@@ -1675,7 +1675,7 @@ function download(ev) {
   rec.ondataavailable = e => chunks.push(e.data);
   const available_types = getSupportedMimeTypes();
   if (available_types.length == 0) {
-    alert("Cannot export! Please use a Screen Recorder instead.");
+    alert("cannot export! please use a Screen Recorder instead.");
   }
   rec.onstop = e => exportVideo(new Blob(chunks, {
     type: available_types[0],
