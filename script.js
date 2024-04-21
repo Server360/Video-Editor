@@ -1503,13 +1503,10 @@ window.addEventListener('load', function() {
   let seen = localStorage.getItem('_seen');
   if (!seen || false) {
     const text = document.createElement('div');
-    text.innerHTML = `welcome!
+    text.innerHTML = `Welcome!
       <br>
       <br>
-      to start, drag in or paste URLs to videos and images.
-      <br>
-      a demo can be found <a href="https://bwasti.github.io/mebm/#https%3A%2F%2Fjott.live%2Fraw%2Ftutorial.json" target="_blank">here</a>
-      and usage information <a href="https://github.com/bwasti/mebm#usage" target="_blank">here</a>.
+      To start, drag in or paste URLs to videos and images.
       `;
     popup(text);
     localStorage.setItem('_seen', 'true');
@@ -1530,14 +1527,14 @@ window.addEventListener("touchmove", function (e) {
 }, { passive: false });
 
 function add_text() {
-  let t = prompt("enter text");
+  let t = prompt("Enter Text");
   if (t) {
     player.add(new TextLayer(t));
   }
 }
 
 function exportVideo(blob) {
-  alert("Warning: exported video may need to be fixed with cloudconvert.com or similar tools");
+  alert("Warning: exported video may need to be fixed with CloudConvert.com or similar tools");
   const vid = document.createElement('video');
   vid.controls = true;
   vid.src = URL.createObjectURL(blob);
@@ -1583,7 +1580,7 @@ function uploadSupportedType(files) {
     const text = document.createElement('div');
     text.style.textAlign = "left";
     text.innerHTML = `
-    the file(s) you uploaded are not supported :
+    The file(s) you uploaded are not supported:
     <br>
     <br>
     ${badFiles}
@@ -1652,12 +1649,12 @@ function download(ev) {
     return;
   }
   if (player.layers.length == 0) {
-    alert("nothing to export");
+    alert("Eothing to export");
     return;
   }
   const e = document.getElementById('export');
   const e_text = e.textContent;
-  e.textContent = "exporting...";
+  e.textContent = "Exporting...";
   const chunks = [];
   const stream = player.canvas.captureStream();
 
@@ -1678,7 +1675,7 @@ function download(ev) {
   rec.ondataavailable = e => chunks.push(e.data);
   const available_types = getSupportedMimeTypes();
   if (available_types.length == 0) {
-    alert("cannot export! please use a screen recorder instead");
+    alert("Cannot export! Please use a Screen Recorder instead.");
   }
   rec.onstop = e => exportVideo(new Blob(chunks, {
     type: available_types[0],
