@@ -34,7 +34,7 @@ class Settings {
     this.holder.classList.toggle('holder');
     this.div.appendChild(this.holder);
     const ok = document.createElement('a');
-    ok.textContent = '[apply]'
+    ok.textContent = '[APPLY]'
     this.div.appendChild(ok);
   }
 
@@ -54,11 +54,11 @@ class Settings {
 
 function updateSettings() {
   let settings = new Settings();
-  settings.add('fps', 'text',
+  settings.add('FPS', 'text',
     e => e.value = fps.toFixed(2),
     e => fps = Number.parseInt(e.target.value)
     );
-  settings.add('max RAM (in MB)', 'text',
+  settings.add('Max RAM (in MB)', 'text',
     e => e.value = (max_size / 1e6).toFixed(2),
     e => max_size = 1e6 * Number.parseInt(e.target.value)
     );
@@ -79,11 +79,11 @@ function exportToJson() {
   let mebm_url = window.location + "#" + uri;
   const text = document.createElement('div');
   const preamble = document.createElement('span');
-  preamble.textContent = "copy the link below to share:";
+  preamble.textContent = "Copy the link below to share:";
   const a = document.createElement('a');
   a.href = mebm_url;
   a.setAttribute("target", "_blank");
-  a.textContent = "[link]";
+  a.textContent = "[LINK]";
 
   const json = document.createElement('pre');
   json.textContent = player.dumpToJson();
@@ -97,7 +97,7 @@ function exportToJson() {
   text.appendChild(document.createElement('br'));
   text.appendChild(document.createElement('br'));
   const preamble2 = document.createElement('span');
-  preamble2.textContent = "or save and host the JSON below";
+  preamble2.textContent = "Or save and host the JSON below.";
   text.appendChild(preamble2);
   text.appendChild(document.createElement('br'));
   text.appendChild(document.createElement('br'));
@@ -166,7 +166,7 @@ class RenderedLayer {
     this.description = document.createElement('span');
     this.description.classList.toggle('description');
     this.description.addEventListener('click', (function(e) {
-      const new_text = prompt("enter new text");
+      const new_text = prompt("Enter new text:");
       if (new_text) {
         this.update_name(new_text);
       }
@@ -177,7 +177,7 @@ class RenderedLayer {
     delete_option.textContent = '[x]';
     delete_option.style.float = "right";
     delete_option.addEventListener('click', (function() {
-      if (confirm("delete layer \"" + this.name + "\"?")) {
+      if (confirm("Delete layer \"" + this.name + "\"?")) {
         this.player.remove(this);
       }
     }).bind(this));
@@ -837,7 +837,7 @@ class Player {
         layer = await this.addURI(layer_d.uri);
       }
       if (!layer) {
-        alert("layer couldn't be processed");
+        alert("Layer couldn't be processed.");
         continue;
       }
       on_ready(layer, function(l) {
@@ -1506,7 +1506,7 @@ window.addEventListener('load', function() {
     text.innerHTML = `Welcome!
       <br>
       <br>
-      to start, drag in or paste URLs to videos and images.
+      To start, drag-n-drop or paste URLs to images or videos.
       `;
     popup(text);
     localStorage.setItem('_seen', 'true');
@@ -1527,14 +1527,14 @@ window.addEventListener("touchmove", function (e) {
 }, { passive: false });
 
 function add_text() {
-  let t = prompt("enter text");
+  let t = prompt("Enter text:");
   if (t) {
     player.add(new TextLayer(t));
   }
 }
 
 function exportVideo(blob) {
-  alert("warning: exported video may need to be fixed with cloudconvert.com or similar tools");
+  alert("Warning: Exported video may need to be fixed with CloudConvert.com or similar tools.");
   const vid = document.createElement('video');
   vid.controls = true;
   vid.src = URL.createObjectURL(blob);
@@ -1548,7 +1548,7 @@ function exportVideo(blob) {
       a = document.createElement('a');
       a.id = 'download';
       a.download = (new Date()).getTime() + '.' + extension;
-      a.textContent = 'download';
+      a.textContent = 'Download';
     }
     a.href = vid.src;
     document.getElementById('header').appendChild(a);
@@ -1580,7 +1580,7 @@ function uploadSupportedType(files) {
     const text = document.createElement('div');
     text.style.textAlign = "left";
     text.innerHTML = `
-    the file(s) you uploaded are not supported:
+    The file(s) you uploaded are not supported:
     <br>
     <br>
     ${badFiles}
@@ -1649,12 +1649,12 @@ function download(ev) {
     return;
   }
   if (player.layers.length == 0) {
-    alert("nothing to export");
+    alert("Nothing to export.");
     return;
   }
   const e = document.getElementById('export');
   const e_text = e.textContent;
-  e.textContent = "exporting...";
+  e.textContent = "Exporting...";
   const chunks = [];
   const stream = player.canvas.captureStream();
 
@@ -1675,7 +1675,7 @@ function download(ev) {
   rec.ondataavailable = e => chunks.push(e.data);
   const available_types = getSupportedMimeTypes();
   if (available_types.length == 0) {
-    alert("cannot export! please use a Screen Recorder instead.");
+    alert("Cannot export! Please use a screen recorder instead.");
   }
   rec.onstop = e => exportVideo(new Blob(chunks, {
     type: available_types[0],
