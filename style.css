@@ -126,6 +126,7 @@ text-align: center;
   background: rgb(55,55,55);
   text-align: center;
   font-size: 12px;
+  font-family: 'ScriptWriter';
 }
 
 a {
@@ -154,6 +155,7 @@ a:visited {
 
 #layers .preview {
   font-size: 12px;
+  font-family: 'ScriptWriter';
   word-break: break-all;
   display: flex;
   padding: 4px;

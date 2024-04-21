@@ -6,6 +6,16 @@ Author: Richard Clark - http://richclarkdesign.com
 Twitter: @rich_clark
 */
 
+@font-face {
+    font-family: ScriptWriter;
+    src: url(/CourierScriptwriter.ttf);
+  }
+  
+  @font-face {
+    font-family: ScriptWriter-Bold;
+    src: url(/CourierScriptwriter-Bold.ttf);
+  }
+
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code,
@@ -23,6 +33,7 @@ time, mark, audio, video {
     border:0;
     outline:0;
     font-size:100%;
+    font-family: 'ScriptWriter';
     vertical-align:baseline;
     background:transparent;
 }
@@ -54,6 +65,7 @@ a {
     margin:0;
     padding:0;
     font-size:100%;
+    font-family: 'ScriptWriter';
     vertical-align:baseline;
     background:transparent;
 }
@@ -69,8 +81,7 @@ ins {
 mark {
     background-color:#ff9;
     color:#000; 
-    font-style:italic;
-    font-weight:bold;
+    font-family: 'ScriptWriter-Bold';
 }
 
 del {

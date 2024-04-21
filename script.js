@@ -547,7 +547,7 @@ class TextLayer extends MoveableLayer {
     if (f) {
 
       let scale = f[2];
-      this.ctx.font = Math.floor(scale * 30) + "px System UI";
+      this.ctx.font = Math.floor(scale * 30) + "px sans-serif";
       let lines = this.name.split('\n');
       let rect = this.ctx.measureText(this.name);
       this.width = rect.width;
@@ -1527,7 +1527,7 @@ window.addEventListener("touchmove", function (e) {
 }, { passive: false });
 
 function add_text() {
-  let t = prompt("Enter Text");
+  let t = prompt("enter text");
   if (t) {
     player.add(new TextLayer(t));
   }
